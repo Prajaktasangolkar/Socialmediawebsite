@@ -1,5 +1,5 @@
 import React from 'react'
-import Logo from '../../assets/img/logo.png'
+import Logo from '../../../assets/img/logo.png'
 import { FiSearch } from "react-icons/fi";
 import './Logosearch.css'
 export const Logosearch = () => {
