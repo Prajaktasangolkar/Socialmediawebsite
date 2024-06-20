@@ -8,7 +8,7 @@ export const Posts = () => {
         
        {
         PostsData.map((post,id)=>{
-            return <Post data={data} id={id}/>
+            return <Post data={post} id={id}/>
         })
        }
        

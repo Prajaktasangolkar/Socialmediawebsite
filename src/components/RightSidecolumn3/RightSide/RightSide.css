@@ -1,0 +1,30 @@
+.RightSide{
+    display: flex;
+    flex-direction: column;
+    gap:2rem;
+}
+
+.navIcons{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navIcons>img{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+
+.container {
+    display: flex;
+    justify-content: center; /* Centers children horizontally */
+    align-items: center;     /* Centers children vertically if needed */
+    height: 10vh;           /* Example height to center vertically */
+  }
+  
+  .r-button {
+    height: 3rem;
+    width: 80%;
+  }
+  

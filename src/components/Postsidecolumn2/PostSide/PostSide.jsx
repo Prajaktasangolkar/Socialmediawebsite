@@ -8,6 +8,7 @@ export const PostSide = () => {
     <div className="PostSide">
         <PostShare/>
         <Posts/>
+       
     </div>
   )
 }
