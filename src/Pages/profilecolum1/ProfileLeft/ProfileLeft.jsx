@@ -3,13 +3,27 @@ import { FaPen } from "react-icons/fa";
 import './ProfileLeft.css'
 import ProfileModal from '../ProfileModal/ProfileModal';
 export const ProfileLeft = () => {
-  const[modalOpened,setModalOpened]=useState(false)
+
+const[modalOpened,setModalOpened]=useState(false)
+ const onclicking=()=>{
+  setModalOpened(true)
+  console.log('hiii');
+ }
   return (
     <div className="InfoCard">
       <div className="infoHead">
         <h4>Your Info</h4>
-        <FaPen  onClick={()=>setModalOpened(true)}/>
-          <ProfileModal/>
+        <div>
+          <FaPen
+            width="2rem"
+            height="1.2rem"
+            onClick={() => setModalOpened(true)}
+          />
+          <ProfileModal
+            modalOpened={modalOpened}
+            setModalOpened={setModalOpened}
+          />
+        </div>
       </div>
       <div className="info">
         <span>
