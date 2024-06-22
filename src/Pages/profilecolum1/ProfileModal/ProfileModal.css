@@ -1,0 +1,6 @@
+/* ProfileModal.css */
+.modalOverlay {
+    backdrop-filter: blur(3px);
+    background-color: rgba(0, 0, 0, 0.55); /* Adjust the opacity as needed */
+  }
+  

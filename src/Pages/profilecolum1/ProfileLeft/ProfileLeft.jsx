@@ -1,14 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { FaPen } from "react-icons/fa";
-import './ProfileLeft.css'
+import './ProfileLeft.css';
 import ProfileModal from '../ProfileModal/ProfileModal';
-export const ProfileLeft = () => {
 
-const[modalOpened,setModalOpened]=useState(false)
- const onclicking=()=>{
-  setModalOpened(true)
-  console.log('hiii');
- }
+export const ProfileLeft = () => {
+  const [modalOpened, setModalOpened] = useState(false);
+
   return (
     <div className="InfoCard">
       <div className="infoHead">
@@ -29,7 +26,7 @@ const[modalOpened,setModalOpened]=useState(false)
         <span>
           <b>Status</b>
         </span>
-        <span>in realtionship</span>
+        <span>in relationship</span>
       </div>
       <div className="info">
         <span>
@@ -45,5 +42,5 @@ const[modalOpened,setModalOpened]=useState(false)
       </div>
       <button className="button logout-button">Logout</button>
     </div>
-  )
-}
+  );
+};
