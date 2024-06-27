@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./Auth.css";
 import Logo from "../assets/img/logo.png";
-import { LogIn, signUp } from "../redux/actions/AuthAction.js";
+import { LogIn, SignUp } from "../redux/actions/AuthAction.js";
 import { useDispatch, useSelector } from "react-redux";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Auth = () => {
   const initialState = {
@@ -11,19 +11,20 @@ const Auth = () => {
     lastname: "",
     username: "",
     password: "",
+    email:"",
     confirmpass: "",
   };
-  const loading = useSelector((state) => state.loading);
+  const loading = useSelector((state) => state.authReducer.loading);
   console.log('loading',loading);
-//   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [isSignUp, setIsSignUp] = useState(false);
 
   const [data, setData] = useState(initialState);
 
   const [confirmPass, setConfirmPass] = useState(true);
 
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
   // Reset Form
   const resetForm = () => {
@@ -42,10 +43,11 @@ const Auth = () => {
     e.preventDefault();
     if (isSignUp) {
       data.password === data.confirmpass
-        ? dispatch(signUp(data))
+        ? dispatch(SignUp(data,navigate))
         : setConfirmPass(false);
+        console.log('data',data);
     } else {
-      dispatch(LogIn(data));
+      dispatch(LogIn(data,navigate));
     }
   };
 
@@ -87,10 +89,7 @@ const Auth = () => {
                 value={data.lastname}
                 onChange={handleChange}
               />
-            </div>
-          )}
-
-          <div>
+                {/* <div> */}
             <input
               required
               type="text"
@@ -98,6 +97,20 @@ const Auth = () => {
               className="infoInput"
               name="username"
               value={data.username}
+              onChange={handleChange}
+            />
+          </div>
+            // </div>
+          )}
+
+        
+          <div>
+            <input
+              type="email"
+              className="infoInput"
+              name="email"
+              placeholder="Email"
+              value={data.email}
               onChange={handleChange}
             />
           </div>
