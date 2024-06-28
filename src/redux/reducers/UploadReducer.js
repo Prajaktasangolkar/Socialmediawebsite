@@ -17,10 +17,11 @@ const uploadReducer=(state=initialState,action)=>{
                 uploading:true
             }
         case UPLOAD_SUCCESS:
+            console.log('...state.posts',action.data);
             return {
                 ...state,
                 loading:false,
-                posts:[action.data, ...state.posts],
+                posts:[action.payload, ...state.posts],
                 error:false,
                 uploading:false
             }

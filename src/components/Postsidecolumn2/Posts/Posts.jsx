@@ -1,8 +1,9 @@
 import React from 'react'
 import './Posts.css'
 import { PostsData } from '../../../data/Posts'
-import { Post } from '../Post/Post'
+import { Post } from '../Post/Post';
 export const Posts = () => {
+  
   return (
     <div className="Posts">
         

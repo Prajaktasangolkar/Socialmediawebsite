@@ -44,6 +44,7 @@ export const PostShare = () => {
          console.log(error);
       }
     }
+    console.log('newposttttt',newPost);
     dispatch(uploadPost(newPost))
   };
   return (
