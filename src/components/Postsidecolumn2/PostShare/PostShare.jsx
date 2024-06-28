@@ -10,6 +10,9 @@ import { useSelector,useDispatch } from "react-redux";
 import {uploadImage,uploadPost} from '../../../redux/actions/uploadAction.js'
 
 export const PostShare = () => {
+  const loading=useSelector((state)=>state.uploadReducer.uploading)
+  
+  console.log('loading',loading);
   const [image, setImage] = useState(null);
   const imageRef = useRef();
   const onImageChange = (event) => {
@@ -19,10 +22,14 @@ export const PostShare = () => {
       setImage(img);
     }
   };
+   const serverPublic='http://localhost:5000/images/';
   const dispatch=useDispatch()
   const user = useSelector((state) => state.authReducer.data.user);
   console.log('state id',user);
-
+  const reset=()=>{
+    setImage(null);
+    desc.current.value='';
+  }
   const desc=useRef()
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -46,10 +53,12 @@ export const PostShare = () => {
     }
     console.log('newposttttt',newPost);
     dispatch(uploadPost(newPost))
+    reset()
   };
+
   return (
     <div className="PostShare">
-      <img src={profileimage} alt="" />
+      <img src={user.coverPicture ?serverPublic+user.profilePicture :serverPublic+"defaultProfile.png" } alt="" />
       <div>
         <input type="text" placeholder="What's happening?"
         ref={desc}
@@ -76,8 +85,8 @@ export const PostShare = () => {
             <SlCalender />
             Schedule
           </div>
-          <button className="button ps-button" onClick={handleSubmit}>
-            Share
+          <button className="button ps-button" onClick={handleSubmit} disabled={loading}>
+            {loading? "Uploading...":"Share"}
           </button>
           <div style={{ display: "none" }}>
             <input

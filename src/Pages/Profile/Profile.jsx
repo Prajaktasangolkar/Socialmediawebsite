@@ -9,7 +9,7 @@ export const Profile = () => {
     <div className="Profile">
         <LeftsideProfile/>
         <div className="Profile-center">
-            <ProfileCard/>
+            <ProfileCard location='profilecard'/>
             <PostSide/>
         </div>
         <RightSide/>

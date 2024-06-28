@@ -5,13 +5,14 @@ import Noti from '../../../assets/img/noti.png'
 import Comment from '../../../assets/img/comment.png'
 import { IoSettingsSharp } from "react-icons/io5";
 import { TrendCard } from '../TrendCard/TrendCard'
-
+import { Link } from 'react-router-dom'
 
 export const RightSide = () => {
   return (
     <div className="Rightside">
            <div className="navIcons">
-            <img src={Home} alt="" />
+            <Link to='/home'><img src={Home} alt="" /></Link>
+           
             <IoSettingsSharp />
             <img src={Noti} alt="" />
             <img src={Comment} alt="" />

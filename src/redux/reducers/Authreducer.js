@@ -1,4 +1,4 @@
-import { AUTH_START,AUTH_SUCCESS,AUTH_FAIL } from "../actions/AuthAction.js";
+import { AUTH_START,AUTH_SUCCESS,AUTH_FAIL, LOG_OUT } from "../actions/AuthAction.js";
 
 const initialState={
     data:[],
@@ -26,6 +26,14 @@ const authReducer=(state=initialState,action)=>{
                 loading:false,
                 error:action.payload
             }
+        case LOG_OUT:
+            localStorage.clear()
+                return{
+                    ...state,
+                    data:null,
+                    loading:false,
+                    error:action.payload
+                }    
         default :
             return state
         
