@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { uploadImage } from "../../../redux/actions/uploadAction.js";
+import {updateUser} from '../../../redux/actions/userActions.js'
 function ProfileModal({ modalOpened, setModalOpened ,data}) {
   const theme = useMantineTheme();
   const {password,...other}=data;
@@ -11,6 +12,7 @@ function ProfileModal({ modalOpened, setModalOpened ,data}) {
  const [coverImage,setcoverImage]=useState(null)
  const dispatch=useDispatch()
  const param=useParams()
+
  const {user}=useSelector((state)=>state.authReducer.data)
  const handleChange=(e)=>{
   setFormData({...formData,[e.target.name]:e.target.value})
@@ -46,13 +48,15 @@ function ProfileModal({ modalOpened, setModalOpened ,data}) {
       data.append("name",filename)
       data.append('file',coverImage)
       UserData.coverImage=filename
-     
       try {
          dispatch(uploadImage(data))
       } catch (error) {
          console.log(error);
       }
     }
+    dispatch(updateUser(param.id,UserData));
+    setModalOpened(false)
+
  }
   return (
     <Modal
