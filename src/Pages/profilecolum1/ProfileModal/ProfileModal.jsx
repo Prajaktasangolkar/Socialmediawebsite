@@ -13,9 +13,10 @@ function ProfileModal({ modalOpened, setModalOpened ,data}) {
  const dispatch=useDispatch()
  const param=useParams()
 
- const {user}=useSelector((state)=>state.authReducer.data)
+//  const {user}=useSelector((state)=>state.authReducer.data)
  const handleChange=(e)=>{
   setFormData({...formData,[e.target.name]:e.target.value})
+  console.log('settttttt',setFormData);
  }
 
  const onImageChange =(event)=>{
@@ -28,14 +29,15 @@ function ProfileModal({ modalOpened, setModalOpened ,data}) {
  };
 
  const handleSubmit=(e)=>{
-    e.preventDeafault()
+    e.preventDefault()
     let UserData=formData;
     if (profileImage){
       const data=new FormData();
       const filename=Date.now()+profileImage.name;
+      // eslint-disable-next-line react/prop-types
       data.append("name",filename)
       data.append('file',profileImage)
-      UserData.profileImage=filename
+      UserData.profilePicture=filename
       try {
          dispatch(uploadImage(data))
       } catch (error) {
@@ -47,9 +49,10 @@ function ProfileModal({ modalOpened, setModalOpened ,data}) {
       const filename=Date.now()+coverImage.name;
       data.append("name",filename)
       data.append('file',coverImage)
-      UserData.coverImage=filename
+      UserData.coverPicture=filename;
       try {
          dispatch(uploadImage(data))
+         console.log('submittt',filename);
       } catch (error) {
          console.log(error);
       }

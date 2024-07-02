@@ -12,17 +12,18 @@ export const ProfileLeft = () => {
   const dispatch=useDispatch()
   const params=useParams()
   const profileUserId=params.id;
-  const [profileUser,setprofileUser]=useState([])
+  const [profileUser,setprofileUser]=useState({})
   const {user}= useSelector((state)=>state.authReducer.data)
 
   useEffect(()=>{
     const fetchProfileUser=async()=>{
-          if(profileUser=== user._id){
+          if(profileUserId=== user._id){
             setprofileUser(user)
           }
           else{
             const profileUser=await UserApi.getUser(profileUserId);
             setprofileUser(profileUser)
+            console.log('profileUser',profileUser);
           }
     }
     fetchProfileUser()
@@ -69,7 +70,7 @@ export const ProfileLeft = () => {
         <span>
           <b>Works at</b>
         </span>
-        <span>{profileUser.workAt}</span>
+        <span>{profileUser.worksAt}</span>
       </div>
       <button className="button logout-button" onClick={handleLogOut}>Logout</button>
     </div>

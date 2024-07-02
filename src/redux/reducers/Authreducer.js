@@ -8,6 +8,8 @@ import {
   UPDATING_START,
   UPDATING_SUCCESS,
   UPDATING_FAIL,
+  FOLLOW_USER,
+  UNFOLLOW_USER,
 } from "../actions/userActions.js";
 
 const initialState = {
@@ -26,6 +28,7 @@ const authReducer = (state = initialState, action) => {
         error: null,
       };
     case AUTH_SUCCESS:
+      window.localStorage.setItem("profile", JSON.stringify({...action?.data}));
       return {
         ...state,
         loading: false,
@@ -44,7 +47,7 @@ const authReducer = (state = initialState, action) => {
         error: null,
       };
     case UPDATING_SUCCESS:
-        localStorage.setItem("profile",JSON.stringify({...action?.data}))
+        window.localStorage.setItem("profile",JSON.stringify({...action?.data}))
       return {
         ...state,
         updateLoading: false,
@@ -65,6 +68,16 @@ const authReducer = (state = initialState, action) => {
         loading: false,
         error: action.payload,
       };
+    case FOLLOW_USER:
+      return {
+        ...state,
+        data:{...state.data, user:{...state.data.user, following:[...state.data.user.following,action.data]}}
+      }
+    case UNFOLLOW_USER:
+      return {
+        ...state,
+        data:{...state.data, user:{...state.data.user, following:[...state.data.user.following.filter((personId)=>personId!=action.data)]}}
+      }    
     default:
       return state;
   }

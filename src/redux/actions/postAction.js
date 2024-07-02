@@ -23,13 +23,13 @@ export const retreivingFail=(error)=>{
 }
 
 
-export const getTimeLinePosts=(id)=>async(dispatch)=>{
-    dispatch(retreivingStart())
+export const getTimeLinePosts = (id) => async (dispatch) => {
+    dispatch(retreivingStart());
     try {
-       const {data}=  await postApi.getTimelinePosts(id);
-       dispatch(retreivingSuccess(data))
+      const { data } = await postApi.getTimelinePosts(id);
+      dispatch(retreivingSuccess(data));
     } catch (error) {
-        console.log(error);
-        dispatch(retreivingFail(error))
+      console.log("Error fetching timeline posts:", error);
+      dispatch(retreivingFail(error));
     }
-}
+  };

@@ -2,6 +2,8 @@ import * as  UserApi from '../API/UserRequest.js'
 export const UPDATING_START='UPDATING_START'
 export const UPDATING_SUCCESS='UPDATING_SUCCESS'
 export const UPDATING_FAIL='UPDATING_FAIL'
+export const FOLLOW_USER='FOLLOW_USER'
+export const UNFOLLOW_USER='UNFOLLOW_USER'
 
 export const updatingStart=()=>{
     return {
@@ -22,6 +24,16 @@ export const updatingFail=(error)=>{
     }
 }
 
+export const followUsers=()=>{
+    return {
+        type:"FOLLOW_USER"
+    }
+}
+export const unfollowUsers=()=>{
+    return {
+        type:"UNFOLLOW_USER"
+    }
+}
 
 
 export const updateUser=(id,formData)=>async(dispatch)=>{
@@ -29,8 +41,22 @@ export const updateUser=(id,formData)=>async(dispatch)=>{
     try {
        const {data}=  await UserApi.updateUser(id,formData);
        dispatch(updatingSuccess(data))
+       console.log('dattttaaa',data);
     } catch (error) {
         console.log(error);
         dispatch(updatingFail(error))
     }
 }
+
+export const followUser=(id,data)=>async(dispatch)=>{
+    dispatch(followUsers())
+   UserApi.followUser(id,data)
+}
+
+export const unfollowUser=(id,data)=>async(dispatch)=>{
+    dispatch(unfollowUsers())
+   UserApi.unfollowUser(id,data)
+}
+
+
+
