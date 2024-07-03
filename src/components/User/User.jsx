@@ -5,7 +5,7 @@ import { followUser, unfollowUser } from '../../redux/actions/userActions'
 export const User = ({person}) => {
 const serverPublic='http://localhost:5000/images/'
 const {user}=useSelector((state)=>state.authReducer.data)
-const [following,setFollowing]=useState(person.following.includes(user._id))
+const [following,setFollowing]=useState(person.followers.includes(user._id))
 const dispatch=useDispatch()
  const handleFollow=()=>{
     following?
