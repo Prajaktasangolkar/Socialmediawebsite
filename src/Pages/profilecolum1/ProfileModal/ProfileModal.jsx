@@ -28,7 +28,7 @@ function ProfileModal({ modalOpened, setModalOpened ,data}) {
    }
  };
 
- const handleSubmit=(e)=>{
+ const handleSubmit=async (e)=>{
     e.preventDefault()
     let UserData=formData;
     if (profileImage){
@@ -39,7 +39,7 @@ function ProfileModal({ modalOpened, setModalOpened ,data}) {
       data.append('file',profileImage)
       UserData.profilePicture=filename
       try {
-         dispatch(uploadImage(data))
+         await dispatch(uploadImage(data))
       } catch (error) {
          console.log(error);
       }
@@ -51,7 +51,7 @@ function ProfileModal({ modalOpened, setModalOpened ,data}) {
       data.append('file',coverImage)
       UserData.coverPicture=filename;
       try {
-         dispatch(uploadImage(data))
+        await dispatch(uploadImage(data))
          console.log('submittt',filename);
       } catch (error) {
          console.log(error);
@@ -61,6 +61,7 @@ function ProfileModal({ modalOpened, setModalOpened ,data}) {
     setModalOpened(false)
 
  }
+ 
   return (
     <Modal
       overlayColor={

@@ -20,18 +20,20 @@ export const updatingSuccess=(data)=>{
 export const updatingFail=(error)=>{
     return {
         type:UPDATING_FAIL,
-        paload:error
+        payload:error
     }
 }
 
-export const followUsers=()=>{
+export const followUsers=(userId)=>{
     return {
-        type:"FOLLOW_USER"
+        type:"FOLLOW_USER",
+        payload:userId,
     }
 }
-export const unfollowUsers=()=>{
+export const unfollowUsers=(userId)=>{
     return {
-        type:"UNFOLLOW_USER"
+        type:"UNFOLLOW_USER",
+        payload:userId,
     }
 }
 
@@ -43,18 +45,18 @@ export const updateUser=(id,formData)=>async(dispatch)=>{
        dispatch(updatingSuccess(data))
        console.log('dattttaaa',data);
     } catch (error) {
-        console.log(error);
+        console.log("error",error);
         dispatch(updatingFail(error))
     }
 }
 
 export const followUser=(id,data)=>async(dispatch)=>{
-    dispatch(followUsers())
+    dispatch(followUsers(id))
    UserApi.followUser(id,data)
 }
 
 export const unfollowUser=(id,data)=>async(dispatch)=>{
-    dispatch(unfollowUsers())
+    dispatch(unfollowUsers(id))
    UserApi.unfollowUser(id,data)
 }
 

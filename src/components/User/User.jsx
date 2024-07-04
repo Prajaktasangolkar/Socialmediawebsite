@@ -1,4 +1,4 @@
-import React ,{useState} from 'react'
+import React ,{useState,useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { followUser, unfollowUser } from '../../redux/actions/userActions'
 
@@ -7,12 +7,18 @@ const serverPublic='http://localhost:5000/images/'
 const {user}=useSelector((state)=>state.authReducer.data)
 const [following,setFollowing]=useState(person.followers.includes(user._id))
 const dispatch=useDispatch()
- const handleFollow=()=>{
-    following?
-    dispatch(unfollowUser(person._id,user)):
-    dispatch(followUser(person._id,user));
-    setFollowing((prev)=>!prev)
- }
+useEffect(() => {
+  setFollowing(person.followers.includes(user._id));
+}, [person.followers, user._id]);
+
+const handleFollow = () => {
+  if (following) {
+    dispatch(unfollowUser(person._id, user));
+  } else {
+    dispatch(followUser(person._id, user));
+  }
+  setFollowing((prev) => !prev);
+};
   return (
     <div className="follower">
     <div>

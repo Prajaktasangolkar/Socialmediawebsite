@@ -68,16 +68,38 @@ const authReducer = (state = initialState, action) => {
         loading: false,
         error: action.payload,
       };
+    // case FOLLOW_USER:
+    //   return {
+    //     ...state,
+    //     data:{...state.data, user:{...state.data.user, following:[...state.data.user.following,action.data]}}
+    //   }
+    // case UNFOLLOW_USER:
+    //   return {
+    //     ...state,
+    //     data:{...state.data, user:{...state.data.user, following:[...state.data.user.following.filter((personId)=>personId!=action.data)]}}
+    //   }    
     case FOLLOW_USER:
       return {
         ...state,
-        data:{...state.data, user:{...state.data.user, following:[...state.data.user.following,action.data]}}
-      }
+        data: {
+          ...state.data,
+          user: {
+            ...state.data.user,
+            following: [...state.data.user.following, action.payload],
+          },
+        },
+      };
     case UNFOLLOW_USER:
       return {
         ...state,
-        data:{...state.data, user:{...state.data.user, following:[...state.data.user.following.filter((personId)=>personId!=action.data)]}}
-      }    
+        data: {
+          ...state.data,
+          user: {
+            ...state.data.user,
+            following: state.data.user.following.filter((personId) => personId !== action.payload),
+          },
+        },
+      };
     default:
       return state;
   }
