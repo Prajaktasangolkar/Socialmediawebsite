@@ -2,6 +2,8 @@ import * as  UploadApi from '../API/UploadRequest.js'
 export const UPLOAD_START='UPLOAD_START'
 export const UPLOAD_SUCCESS='UPLOAD_SUCCESS'
 export const UPLOAD_FAIL='UPLOAD_FAIL'
+export const LIKE_USER='LIKE_USER'
+export const DISLIKE_USER='DISLIKE_USER'
 
 export const uploadStart=()=>{
     return {
@@ -31,6 +33,19 @@ export const uploadImage=(data)=>async(dispatch)=>{
     }
 }
 
+export const likeUsers=(postId,userId)=>{
+    return {
+        type:"LIKE_USER",
+        payload:{ postId, userId },
+    }
+}
+export const dislikeUsers=(postId,userId)=>{
+    return {
+        type:"DISLIKE_USER",
+        payload:{ postId, userId },
+    }
+}
+
 export const uploadPost=(data)=>async(dispatch)=>{
     dispatch(uploadStart())
     try {
@@ -40,4 +55,23 @@ export const uploadPost=(data)=>async(dispatch)=>{
         console.log(error);
         dispatch(uploadFail(error))
     }
+}
+
+
+export const likeUser=(postId, userId)=>async(dispatch)=>{
+   try {
+    await UploadApi.likeUser(postId, userId)
+    dispatch(likeUsers(postId, userId))
+   } catch (error) {
+    console.log(error);
+   }
+}
+
+export const dislikeUser=(postId, userId)=>async(dispatch)=>{
+   try {
+    await UploadApi.dislikeUser(postId, userId)
+    dispatch(dislikeUsers(postId, userId))
+   } catch (error) {
+    console.log(error);
+   }
 }

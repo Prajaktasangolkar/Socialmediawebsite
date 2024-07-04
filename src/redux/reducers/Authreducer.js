@@ -10,6 +10,7 @@ import {
   UPDATING_FAIL,
   FOLLOW_USER,
   UNFOLLOW_USER,
+  
 } from "../actions/userActions.js";
 
 const initialState = {
@@ -100,6 +101,7 @@ const authReducer = (state = initialState, action) => {
           },
         },
       };
+
     default:
       return state;
   }

@@ -5,6 +5,7 @@ export const UPDATING_FAIL='UPDATING_FAIL'
 export const FOLLOW_USER='FOLLOW_USER'
 export const UNFOLLOW_USER='UNFOLLOW_USER'
 
+
 export const updatingStart=()=>{
     return {
         type:UPDATING_START
