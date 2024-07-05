@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { followUser, unfollowUser } from '../../redux/actions/userActions'
 
 export const User = ({person}) => {
-const serverPublic='http://localhost:5000/images/'
+const serverPublic='https://social-media-backend-rose-two.vercel.app/images/'
 const {user}=useSelector((state)=>state.authReducer.data)
 const [following,setFollowing]=useState(person.followers.includes(user._id))
 const dispatch=useDispatch()
