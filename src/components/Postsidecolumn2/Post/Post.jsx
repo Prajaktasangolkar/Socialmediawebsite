@@ -28,7 +28,7 @@ export const Post = ({data}) => {
   return (
     <div className="Post">
 
-        <img src={data.image ? `https://social-media-backend-rose-two.vercel.app/images/`+data.image : ""} alt="" />
+        <img src={data.image ? `http://localhost:5000/images/`+data.image : ""} alt="" />
         {/* console.log('src',{ `http://localhost:5000/images/`+data.image }); */}
         <div className="postReact">
         <div className="postReact" style={{ color: 'white' }}>

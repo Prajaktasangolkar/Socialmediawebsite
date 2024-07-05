@@ -6,7 +6,7 @@ export const ProfileCard = ({location}) => {
   const {user}=useSelector((state)=>state.authReducer.data)
   const {posts}=useSelector((state)=>state.uploadReducer)
   // const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
-  const serverPublic='https://social-media-backend-rose-two.vercel.app/images/'
+  const serverPublic='http://localhost:5000/images/'
   
   return (
     <div className="ProfileCard">

@@ -22,7 +22,7 @@ export const PostShare = () => {
       setImage(img);
     }
   };
-   const serverPublic='https://social-media-backend-rose-two.vercel.app/images/';
+   const serverPublic='http://localhost:5000/images/';
   const dispatch=useDispatch()
   const user = useSelector((state) => state.authReducer.data.user);
   // console.log('state id',user);
