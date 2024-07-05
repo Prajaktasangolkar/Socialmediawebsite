@@ -21,7 +21,7 @@ export const ProfileCard = ({location}) => {
         <div className="followStatus">
             <hr />
             <div>
-            <div className="follow">
+            <div className="follow" style={{color:'white'}}>
                 <span>{user.following.length}</span>
                 <span>Followings</span>
             </div>

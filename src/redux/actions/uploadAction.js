@@ -1,9 +1,12 @@
 import * as  UploadApi from '../API/UploadRequest.js'
+import { getUserApi } from "../API/UserRequest.js";
+
 export const UPLOAD_START='UPLOAD_START'
 export const UPLOAD_SUCCESS='UPLOAD_SUCCESS'
 export const UPLOAD_FAIL='UPLOAD_FAIL'
 export const LIKE_USER='LIKE_USER'
 export const DISLIKE_USER='DISLIKE_USER'
+export const GET_USER_SUCCESS = "GET_USER_SUCCESS";
 
 export const uploadStart=()=>{
     return {
@@ -45,6 +48,11 @@ export const dislikeUsers=(postId,userId)=>{
         payload:{ postId, userId },
     }
 }
+export const getUserSuccess = (user) => ({
+    type: GET_USER_SUCCESS,
+    payload: user,
+  });
+  
 
 export const uploadPost=(data)=>async(dispatch)=>{
     dispatch(uploadStart())
@@ -75,3 +83,14 @@ export const dislikeUser=(postId, userId)=>async(dispatch)=>{
     console.log(error);
    }
 }
+
+
+export const getUserData = (id) => async (dispatch) => {
+    try {
+      const response = await getUserApi(id);
+      dispatch(getUserSuccess(response.data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  

@@ -4,9 +4,11 @@ import {
   UPLOAD_FAIL,
   LIKE_USER,
   DISLIKE_USER,
+  GET_USER_SUCCESS
 } from "../actions/uploadAction.js";
 
 const initialState = {
+  user:{},
   posts: [],
   loading: false,
   error: false,
@@ -22,8 +24,14 @@ const uploadReducer = (state = initialState, action) => {
         error: false,
         uploading: true,
       };
+    case GET_USER_SUCCESS:
+        return {
+          ...state,
+          loading: false,
+          user: action.payload,
+        };
     case UPLOAD_SUCCESS:
-      console.log("...state.posts", action.data);
+      console.log("...state.posts update success reducer", action.data);
       return {
         ...state,
         loading: false,

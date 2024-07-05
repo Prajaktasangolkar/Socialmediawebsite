@@ -46,7 +46,7 @@ const handleChange = (e) => {
                     password:password,
                     confirmpassword:confirmpassword
                    });
-                   console.log(response);
+                  
                    setFormData({
                     username: '',
                     firstname: '',

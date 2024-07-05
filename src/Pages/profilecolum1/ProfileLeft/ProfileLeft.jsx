@@ -15,6 +15,7 @@ export const ProfileLeft = () => {
   const [profileUser,setprofileUser]=useState({})
   const {user}= useSelector((state)=>state.authReducer.data)
 
+
   useEffect(()=>{
     const fetchProfileUser=async()=>{
           if(profileUserId=== user._id){
@@ -58,19 +59,19 @@ export const ProfileLeft = () => {
         <span>
           <b>Status</b>
         </span>
-        <span>{profileUser.relationship}</span>
+        <span>{" : "}{profileUser.relationship}</span>
       </div>
       <div className="info">
         <span>
           <b>Lives in</b>
         </span>
-        <span>{profileUser.livesin}</span>
+        <span>{" : "}{profileUser.livesin}</span>
       </div>
       <div className="info">
         <span>
           <b>Works at</b>
         </span>
-        <span>{profileUser.worksAt}</span>
+        <span>{" : "}{profileUser.worksAt}</span>
       </div>
       <button className="button logout-button" onClick={handleLogOut}>Logout</button>
     </div>

@@ -1,9 +1,12 @@
 .PostShare{
     display: flex;
     gap:1rem;
-    background-color:var(--cardColor) ;
+    /* background-color:var(--cardColor) ; */
     padding: 1rem;
     border-radius: 1rem;
+    background: #121729;
+
+    border: 2px solid #361F78;
 }
 .PostShare>img{
     height: 3rem;
@@ -23,6 +26,7 @@
     font-size: 17px;
     border: none;
     outline: none;
+    color:white;
 }
 .postOptions{
     display: flex;

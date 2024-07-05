@@ -44,7 +44,7 @@ export const updateUser=(id,formData)=>async(dispatch)=>{
     try {
        const {data}=  await UserApi.updateUser(id,formData);
        dispatch(updatingSuccess(data))
-       console.log('dattttaaa',data);
+       console.log('data updateuser',data);
     } catch (error) {
         console.log("error",error);
         dispatch(updatingFail(error))

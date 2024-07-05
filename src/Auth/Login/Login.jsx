@@ -19,7 +19,7 @@ export const Login = () => {
                             password
                          })
                          
-                         console.log(response);
+                         console.log(" login response",response);
                      } catch (error) {
                         console.log("login failed",error.response.data);
                      }

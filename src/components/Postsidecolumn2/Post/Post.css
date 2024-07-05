@@ -2,9 +2,13 @@
     display: flex;
     flex-direction: column;
     padding:1rem;
-    background-color: var(--cardColor);
+    /* background-color: var(--cardColor); */
     border-radius: 1rem;
     gap:1rem;
+    background: #121729;
+
+    border: 2px solid #361F78;
+    color:white
 }
 
 .Post>img{
@@ -12,12 +16,17 @@
     max-height: 20rem;
     object-fit:contain;
     border-radius: 0.5rem;
+    
 }
 
-.postReact{
+.postReact {
     display: flex;
     align-items: flex-start;
     gap: 1.5rem;
-}
-
+  }
+  
+  .invert-color {
+    filter: brightness(0) invert(1);
+  }
+  
 

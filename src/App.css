@@ -17,8 +17,9 @@
 .App{
   overflow: hidden;
   color:var(--buttonBg);
-  background:#f3f3f3;
+  background:#261f1f;
   padding:1rem 1rem;
+  color:rgb(255, 255, 255)
 }
 
 .blur{
@@ -26,7 +27,8 @@
   width:22rem;
   height: 14rem;
   border-radius: 50%;
-  background-color: #a6ddf0;
+  /* background-color: #a6ddf0; */
+  background-color: #50a2be;
   filter:blur(72px)
 }
 

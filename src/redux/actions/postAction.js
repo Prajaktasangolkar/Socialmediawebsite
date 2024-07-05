@@ -29,7 +29,7 @@ export const getTimeLinePosts = (id) => async (dispatch) => {
       const { data } = await postApi.getTimelinePosts(id);
       dispatch(retreivingSuccess(data));
     } catch (error) {
-      console.log("Error fetching timeline posts:", error);
+      console.log(error);
       dispatch(retreivingFail(error));
     }
   };

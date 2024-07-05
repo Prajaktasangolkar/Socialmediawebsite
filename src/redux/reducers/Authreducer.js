@@ -29,7 +29,8 @@ const authReducer = (state = initialState, action) => {
         error: null,
       };
     case AUTH_SUCCESS:
-      window.localStorage.setItem("profile", JSON.stringify({...action?.data}));
+      localStorage.setItem("profile", JSON.stringify({...action?.data}));
+      // localStorage.setItem("profile", JSON.stringify(action.payload));
       return {
         ...state,
         loading: false,
@@ -48,7 +49,8 @@ const authReducer = (state = initialState, action) => {
         error: null,
       };
     case UPDATING_SUCCESS:
-        window.localStorage.setItem("profile",JSON.stringify({...action?.data}))
+      localStorage.setItem("profile",JSON.stringify({...action?.data}))
+      // localStorage.setItem("profile", JSON.stringify(action.data));
       return {
         ...state,
         updateLoading: false,

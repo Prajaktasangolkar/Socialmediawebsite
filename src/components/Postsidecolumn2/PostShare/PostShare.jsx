@@ -12,7 +12,7 @@ import {uploadImage,uploadPost} from '../../../redux/actions/uploadAction.js'
 export const PostShare = () => {
   const loading=useSelector((state)=>state.uploadReducer.uploading)
   
-  console.log('loading',loading);
+  // console.log('loading',loading);
   const [image, setImage] = useState(null);
   const imageRef = useRef();
   const onImageChange = (event) => {
@@ -25,7 +25,7 @@ export const PostShare = () => {
    const serverPublic='http://localhost:5000/images/';
   const dispatch=useDispatch()
   const user = useSelector((state) => state.authReducer.data.user);
-  console.log('state id',user);
+  // console.log('state id',user);
   const reset=()=>{
     setImage(null);
     desc.current.value='';
@@ -42,16 +42,14 @@ export const PostShare = () => {
       const filename=Date.now()+image.name;
       data.append("name",filename)
       data.append('file',image)
-      console.log('ima',image);
+    
       newPost.image=filename
-      console.log('newpost',newPost);
       try {
          dispatch(uploadImage(data))
       } catch (error) {
          console.log(error);
       }
     }
-    console.log('newposttttt',newPost);
     dispatch(uploadPost(newPost))
     reset()
   };

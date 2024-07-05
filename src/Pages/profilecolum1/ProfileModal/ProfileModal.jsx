@@ -1,9 +1,11 @@
 import { Modal, useMantineTheme } from "@mantine/core";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { uploadImage } from "../../../redux/actions/uploadAction.js";
 import {updateUser} from '../../../redux/actions/userActions.js'
+import * as UserApi from '../../../redux/API/UserRequest.js'
+
 function ProfileModal({ modalOpened, setModalOpened ,data}) {
   const theme = useMantineTheme();
   const {password,...other}=data;
@@ -12,13 +14,26 @@ function ProfileModal({ modalOpened, setModalOpened ,data}) {
  const [coverImage,setcoverImage]=useState(null)
  const dispatch=useDispatch()
  const param=useParams()
-
-//  const {user}=useSelector((state)=>state.authReducer.data)
+ const [profileUser, setprofileUser] = useState({});
+ const {user}=useSelector((state)=>state.authReducer.data)
  const handleChange=(e)=>{
+  // e.preventDefault()
   setFormData({...formData,[e.target.name]:e.target.value})
-  console.log('settttttt',setFormData);
+  console.log('setFormData ProfileModal',setFormData);
  }
+ const userId = JSON.parse(localStorage.getItem("store"));
+  console.log(userId.authReducer.data.user._id, "userId");
+  const profileUserId = param.id; 
 
+  useEffect(() => {
+    const fetchProfileUser = async () => {
+      const profileUser = await UserApi.getUserApi(profileUserId);
+      setprofileUser(profileUser);
+      console.log("profileUserr", profileUser);
+    };
+    fetchProfileUser();
+  }, []);
+console.log('profileuserr',profileUser);
  const onImageChange =(event)=>{
    if(event.target.files && event.target.files[0]){
     let img=event.target.files[0];
@@ -52,7 +67,6 @@ function ProfileModal({ modalOpened, setModalOpened ,data}) {
       UserData.coverPicture=filename;
       try {
         await dispatch(uploadImage(data))
-         console.log('submittt',filename);
       } catch (error) {
          console.log(error);
       }

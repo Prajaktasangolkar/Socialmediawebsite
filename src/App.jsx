@@ -52,8 +52,6 @@ import { Profile } from "./Pages/Profile/Profile.jsx";
 const AppContent = () => {
   const user = useSelector((state) => state.authReducer.data?.user); // Use optional chaining
 
-  console.log("userrrr", user);
-
   return (
     <div className="App">
       <div className="blur" style={{ top: "-18%", right: "0" }}></div>

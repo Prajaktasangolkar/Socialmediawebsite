@@ -1,19 +1,23 @@
 .LogoSearch{
     display: flex;
     gap:0.75rem;
-}
+    
 
+}
 .Search{
     display: flex;
-    background-color: var(--inputColor);
+    /* background-color: var(--inputColor); */
     border-radius: 10px;
     padding: 5px;
+    background: #121729;
+border: 2px solid #361F78;
 }
 
 .Search>input{
     background-color: transparent;
     border: none;
     outline: none;
+    color:aliceblue
 }
 .s-icon{
     display: flex;
@@ -29,3 +33,4 @@
 .s-icon:hover{
     
 }
+

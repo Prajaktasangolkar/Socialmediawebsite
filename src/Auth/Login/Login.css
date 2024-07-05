@@ -5,6 +5,9 @@
     height: 100vh;
     gap:4rem;
     position: relative;
+    background: #121729;
+
+border: 2px solid #361F78;
 }
 
 .AuthHome>div{

@@ -11,7 +11,7 @@ export const Post = ({data}) => {
   const {user}=useSelector((state)=>state.authReducer.data)
   const [liked,setLiked]=useState(data.likes.includes(user._id))
   const [likes,setLikes]=useState(data.likes.length)
-  console.log('datassssss',{data});
+ 
   const dispatch = useDispatch();
   
   const handleLike = () => {
@@ -31,12 +31,14 @@ export const Post = ({data}) => {
         <img src={data.image ? `http://localhost:5000/images/`+data.image : ""} alt="" />
         {/* console.log('src',{ `http://localhost:5000/images/`+data.image }); */}
         <div className="postReact">
-            <img src={liked ?Heart : NotLike} alt="" style={{cursor:'pointer'}}
-            onClick={handleLike} />
-            <img src={Comment} alt="" />
-            <img src={Share} alt="" />
-        </div>
-        <span style={{color:"var(--gray)",fontSize:"12px"}}>{likes} likes</span>
+        <div className="postReact" style={{ color: 'white' }}>
+    <img src={liked ? Heart : NotLike} alt="" style={{ cursor: 'pointer' }} onClick={handleLike} />
+
+</div>  <img src={Comment} alt="" className="invert-color" />
+  <img src={Share} alt="" className="invert-color" />
+</div>
+
+        <span style={{fontSize:"12px"}}>{likes} likes</span>
 
         <div className="detail">
           <span><b>{data.name}</b></span>
